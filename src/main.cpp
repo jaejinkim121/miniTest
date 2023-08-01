@@ -1,4 +1,5 @@
-#include "../include/main.h"
+#include "main.h"
+using namespace PE;
 
 StepperMotor::StepperMotor(BYTE lastIP, int id){
     while(FAS_ConnectTCP(192,168,0,lastIP, id) == FALSE){
@@ -20,16 +21,16 @@ int StepperMotor::clearAlarm(int id){
     return FAS_ServoAlarmReset(id);
 }
 
-int StepperMotor::setMotorParameter(int id, int ppr, int maxspeed){
-    FAS_SetParameter(iBdID, 0, ppr);
-	FAS_SetParameter(iBdID, 1, maxSpeed);
+void StepperMotor::setMotorParameter(int id, int ppr, int maxspeed){
+    FAS_SetParameter(id, 0, ppr);
+	FAS_SetParameter(id, 1, maxspeed);
 
     clearAlarm(id);
     return;
 }
 
 int StepperMotor::servoEnable(int id){
-    FAS_ServoEnbale(id, TRUE);
+    return FAS_ServoEnable(id, TRUE);
 }
 
 int StepperMotor::findZeroPosition(){

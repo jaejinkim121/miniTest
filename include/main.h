@@ -20,7 +20,7 @@ public:
     StepperMotor(BYTE lastIP, int id);
     ~StepperMotor();
 
-	void clearAlarm(int iBdID);
+	int clearAlarm(int iBdID);
 	void setMotorParameter(int iBdID, int ppr, int maxSpeed);
 	int servoEnable(int iBdID);
 	int findZeroPosition();
