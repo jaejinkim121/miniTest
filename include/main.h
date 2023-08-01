@@ -32,5 +32,5 @@ public:
 
 int PPR = 10;
 int MaxSpeed = 40000;
-BYTE lastIP = 18;
-int id = 2;
+BYTE lastIP = 2;
+int id = 0;

@@ -41,7 +41,7 @@ int StepperMotor::moveSingleAxis_mm(int id, double posAbs, double period){
     long pulseAbs = posAbs * mm_to_pulse;	// 1rev : 1mm -> 1/1000 rev : 1 micron
 	int velocity = abs(pulseAbs	/ period);
 
-    FAS_MoveSingleAxisAbsPos(id, pulseAbs, velocity);
+    FAS_MoveSingleAxisAbsPos(id, pulseAbs, 10000);
 
 }
 
@@ -65,10 +65,14 @@ int main(){
     motor1->servoEnable(id);
 
     for (int i = 0; i< 10 ; i++){
-        motor1->moveSingleAxis_mm(id, 10000, 1);
+        motor1->moveSingleAxis_mm(id, -7500, 1);
         motor1->isMotioning(id);
 
-        motor1->moveSingleAxis_mm(id, 0, 1);
+        motor1->moveSingleAxis_mm(id, -2500, 1);
         motor1->isMotioning(id);
     }
+
+    motor1->moveSingleAxis_mm(id, 0, 1);
+    motor1->isMotioning(id);
+
 }
